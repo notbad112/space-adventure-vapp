@@ -1,6 +1,12 @@
 body {
-  margin: 0;
-  padding: 0;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+canvas {
+  border:body {
   background: black;
   color: white;
   text-align: center;
@@ -8,9 +14,9 @@ body {
 }
 
 canvas {
+  border: 2px solid white;
+  background: #000;
   display: block;
   margin: 20px auto;
-  background: #111;
-  border: 2px solid white;
 }
 

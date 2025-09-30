@@ -1,21 +1,27 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 600;
-canvas.height = 400;
+let ship = { x: canvas.width / 2 - 15, y: canvas.height - 40, w: 30, h: 30, speed: 5 };
+let keys = {};
 
-// Simple spaceship
-let x = canvas.width / 2;
-let y = canvas.height - 30;
+// kontrol keyboard
+document.addEventListener("keydown", (e) => keys[e.key] = true);
+document.addEventListener("keyup", (e) => keys[e.key] = false);
 
 function drawShip() {
   ctx.fillStyle = "lime";
-  ctx.fillRect(x - 15, y - 15, 30, 30);
+  ctx.fillRect(ship.x, ship.y, ship.w, ship.h);
+}
+
+function update() {
+  if (keys["ArrowLeft"] && ship.x > 0) ship.x -= ship.speed;
+  if (keys["ArrowRight"] && ship.x + ship.w < canvas.width) ship.x += ship.speed;
 }
 
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawShip();
+  update();
   requestAnimationFrame(gameLoop);
 }
 
